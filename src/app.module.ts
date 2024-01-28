@@ -2,23 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Event } from './events/event.entity';
 import { EventsModule } from './events/events.module';
-
+import { dataSourceOptions } from './database/data-source';
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5436,
-      username: 'postgres',
-      password: 'xxx',
-      database: 'infinite-api',
-      entities: [Event],
-      synchronize: false,
-    }),
-    EventsModule,
-  ],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions), EventsModule],
   controllers: [AppController],
   providers: [AppService],
 })

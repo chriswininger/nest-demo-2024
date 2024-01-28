@@ -7,13 +7,13 @@ import { Repository } from 'typeorm';
 export class EventsService {
   constructor(
     @InjectRepository(Event)
-    private eventRepository: Repository<Event>
+    private eventRepository: Repository<Event>,
   ) {}
 
   async findFirst(): Promise<Event | null> {
     return await this.eventRepository
       .createQueryBuilder()
-      .orderBy('"createdAt"', 'DESC')
+      .orderBy('created_at', 'DESC')
       .take(1)
       .getOne();
   }

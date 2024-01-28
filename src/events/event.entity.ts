@@ -54,8 +54,8 @@ export class Event {
   verified: boolean;
 
   // this one is extra pad form in postgres because of how it handles ids
-  @Column({ name: 'createdAt' })
-  createdAt: Date;
+  @Column()
+  created_at: Date;
 
   @Column({ name: 'updatedAt' })
   updatedAt: Date;
